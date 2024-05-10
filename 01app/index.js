@@ -9,8 +9,15 @@ app.get('/',(req,res)=>{
 
 app.get('/users',(req,res)=>{
     let html=`
-    ${db.map(user=> `<li>${user.email}</li>`).join("")}
+    ${db.map(user=> `<li>${user.email + " " + user.id}</li>`).join("")}
     `
+    console.log(req.url);
+    res.send(html)
+})
+
+app.get('/:id',(req,res)=>{
+    let user = db.find((user)=>user.id==req.params.id)
+    let html=`<li>${user.email + " " + user.id}</li>`
     console.log(req.url);
     res.send(html)
 })
