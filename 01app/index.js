@@ -15,7 +15,7 @@ app.get('/users',(req,res)=>{
     res.send(html)
 })
 
-app.get('/:id',(req,res)=>{
+app.get('/users/:id',(req,res)=>{
     let user = db.find((user)=>user.id==req.params.id)
     let html=`<li>${user.email + " " + user.id}</li>`
     console.log(req.url);
